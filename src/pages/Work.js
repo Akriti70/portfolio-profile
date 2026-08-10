@@ -9,10 +9,12 @@ import { motion } from "framer-motion";
 import {
   FaBriefcase,
   FaCode,
-  FaServer,
-  FaCloud,
   FaDatabase,
-  FaReact,
+  FaCloud,
+  FaShieldAlt,
+  FaUsers,
+  FaRocket,
+  FaCheckCircle,
   FaArrowRight,
 } from "react-icons/fa";
 
@@ -22,9 +24,10 @@ const experiences = [
     company: "Bosch",
     location: "Berlin, Germany",
     period: "May 2024 – April 2025",
-    icon: <FaCode />,
-    type: "Software Engineering",
-    responsibilities: [
+    type: "Software Engineering • Backend • Full Stack",
+    description:
+      "Worked on scalable backend services and customer-facing web applications, contributing across API development, system performance, security, cloud infrastructure, and production reliability.",
+    highlights: [
       "Developed scalable backend application services and customer-facing web applications using Node.js, TypeScript, React, Express.js, Python, and Kotlin.",
       "Designed and implemented RESTful APIs supporting microservices architecture and scalable application development.",
       "Improved PostgreSQL schema design, query optimization, backend performance, and API response times.",
@@ -32,53 +35,111 @@ const experiences = [
       "Collaborated with product managers, designers, and platform engineers to deliver production-ready software.",
       "Built and maintained Docker-based deployments and automated CI/CD pipelines using GitHub Actions, Kubernetes, AWS, and Terraform.",
       "Performed backend debugging, logging analysis, monitoring, and production issue resolution.",
-      "Optimized backend services through caching techniques and performance tuning.",
+      "Optimized backend services through caching strategies and performance tuning.",
     ],
+    technologies: [
+      "Node.js",
+      "TypeScript",
+      "React",
+      "Express.js",
+      "Python",
+      "Kotlin",
+      "PostgreSQL",
+      "Docker",
+      "Kubernetes",
+      "AWS",
+      "Terraform",
+      "GitHub Actions",
+    ],
+    icon: <FaRocket />,
   },
+
   {
     title: "Software Working Student",
     company: "Getsafe GmbH",
     location: "Berlin, Germany",
     period: "Nov 2022 – Mar 2024",
-    icon: <FaReact />,
-    type: "Full Stack Development",
-    responsibilities: [
-      "Developed robust APIs and SQL integrations to improve customer data access and application workflows.",
-      "Built automated tests with Jest to improve software quality and release stability.",
-      "Redesigned e-commerce functionality using React.js, Redux, and Material-UI, contributing to a 50% improvement in conversion rates.",
-      "Worked closely with Agile teams through sprint planning, code reviews, pair programming, and technical discussions.",
-      "Improved application performance, scalability, and security using Docker and Kubernetes.",
-      "Collaborated with engineers and product stakeholders to deliver reliable customer-facing features.",
+    type: "Full Stack Development • APIs • Cloud",
+    description:
+      "Contributed to production web applications and backend services with a strong focus on API reliability, automated testing, frontend performance, scalability, and secure engineering practices.",
+    highlights: [
+      "Developed robust backend APIs with SQL integration to streamline customer data access and application workflows.",
+      "Automated application testing with Jest, improving code reliability and reducing regression issues.",
+      "Redesigned and enhanced e-commerce interfaces using React.js, Redux, and Material-UI.",
+      "Contributed to frontend improvements that helped increase platform conversion rates by approximately 50%.",
+      "Participated in Agile ceremonies, code reviews, pair programming, and collaborative technical discussions.",
+      "Optimized application performance, scalability, and security using Docker and Kubernetes.",
+      "Worked closely with engineers and product teams to deliver maintainable production-ready features.",
     ],
+    technologies: [
+      "React.js",
+      "Redux",
+      "Node.js",
+      "SQL",
+      "Jest",
+      "Material-UI",
+      "Docker",
+      "Kubernetes",
+      "REST APIs",
+      "Agile",
+    ],
+    icon: <FaCode />,
   },
+
   {
     title: "Junior Software Engineer",
     company: "Vertex Infotech Services",
     location: "India",
     period: "Aug 2017 – Sept 2019",
-    icon: <FaServer />,
-    type: "Web & Backend Engineering",
-    responsibilities: [
-      "Developed responsive web and mobile applications using JavaScript, TypeScript, Node.js, and Vue.js.",
-      "Designed and integrated RESTful APIs for frontend and backend application communication.",
+    type: "Web Development • Backend • APIs",
+    description:
+      "Built and maintained web and mobile applications while working across frontend development, backend services, databases, API integration, testing, and production support.",
+    highlights: [
+      "Built responsive web and mobile applications using JavaScript, TypeScript, Node.js, and Vue.js.",
+      "Designed and integrated RESTful APIs for frontend and backend application workflows.",
       "Optimized database queries and application performance using MongoDB and SQL Server.",
-      "Collaborated with cross-functional teams during requirements gathering, development, testing, and deployment.",
-      "Contributed to code reviews, technical documentation, debugging, and software maintenance.",
+      "Collaborated with cross-functional teams during requirements gathering, development, testing, and delivery.",
+      "Participated in code reviews and maintained technical documentation for application features.",
       "Supported production issue resolution and backend development using Flask and Django.",
+      "Implemented reusable components and maintainable application structures to support long-term development.",
     ],
+    technologies: [
+      "JavaScript",
+      "TypeScript",
+      "Node.js",
+      "Vue.js",
+      "MongoDB",
+      "SQL Server",
+      "Python",
+      "Flask",
+      "Django",
+      "REST APIs",
+    ],
+    icon: <FaDatabase />,
   },
 ];
 
-const technologies = [
-  "React",
-  "Node.js",
-  "TypeScript",
-  "Python",
-  "PostgreSQL",
-  "Docker",
-  "Kubernetes",
-  "AWS",
-  "Terraform",
+const engineeringAreas = [
+  {
+    icon: <FaCode />,
+    title: "Software Engineering",
+    text: "Clean, maintainable and scalable application development.",
+  },
+  {
+    icon: <FaDatabase />,
+    title: "Backend & APIs",
+    text: "REST APIs, databases, performance optimization and microservices.",
+  },
+  {
+    icon: <FaCloud />,
+    title: "Cloud & DevOps",
+    text: "Docker, Kubernetes, AWS, Terraform and automated CI/CD.",
+  },
+  {
+    icon: <FaShieldAlt />,
+    title: "Security & Reliability",
+    text: "Secure APIs, authentication, monitoring and production support.",
+  },
 ];
 
 export default function Work() {
@@ -93,19 +154,24 @@ export default function Work() {
           min-height: 100vh;
           padding: 110px 7% 90px;
           color: #f8fafc;
+          font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
           background:
             radial-gradient(
               circle at 10% 10%,
-              rgba(99, 102, 241, 0.14),
+              rgba(99, 102, 241, 0.13),
               transparent 28%
             ),
             radial-gradient(
-              circle at 90% 80%,
-              rgba(56, 189, 248, 0.10),
-              transparent 25%
+              circle at 90% 40%,
+              rgba(56, 189, 248, 0.08),
+              transparent 28%
+            ),
+            radial-gradient(
+              circle at 50% 100%,
+              rgba(168, 85, 247, 0.08),
+              transparent 30%
             ),
             #070b12;
-          font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
           position: relative;
           overflow: hidden;
         }
@@ -136,12 +202,10 @@ export default function Work() {
           z-index: 2;
         }
 
-        /* HEADER */
-
         .work-header {
           text-align: center;
           max-width: 850px;
-          margin: 0 auto 70px;
+          margin: 0 auto 75px;
         }
 
         .work-label {
@@ -150,7 +214,7 @@ export default function Work() {
           font-size: 13px;
           font-weight: 700;
           letter-spacing: 3px;
-          margin-bottom: 16px;
+          margin-bottom: 15px;
         }
 
         .work-title {
@@ -175,14 +239,12 @@ export default function Work() {
         }
 
         .work-subtitle {
-          max-width: 700px;
           margin: 25px auto 0;
+          max-width: 720px;
           color: #94a3b8;
           font-size: 17px;
           line-height: 1.8;
         }
-
-        /* EXPERIENCE TIMELINE */
 
         .experience-list {
           position: relative;
@@ -193,9 +255,9 @@ export default function Work() {
         .experience-list::before {
           content: "";
           position: absolute;
-          left: 31px;
-          top: 0;
-          bottom: 0;
+          left: 27px;
+          top: 20px;
+          bottom: 20px;
           width: 1px;
           background: linear-gradient(
             to bottom,
@@ -205,233 +267,266 @@ export default function Work() {
             #38bdf8,
             transparent
           );
-          opacity: 0.6;
         }
-
-        /* EXPERIENCE CARD */
 
         .experience-card {
           position: relative;
-          margin-bottom: 30px;
-          margin-left: 75px;
-          padding: 30px;
+          margin-bottom: 35px;
+          margin-left: 70px;
+          padding: 32px;
           border-radius: 20px;
           border: 1px solid #1e293b;
           background:
             linear-gradient(
               145deg,
-              rgba(15, 23, 42, 0.96),
-              rgba(7, 11, 18, 0.96)
+              rgba(15,23,42,0.96),
+              rgba(8,13,23,0.96)
             );
-          box-shadow:
-            0 20px 60px rgba(0, 0, 0, 0.28);
+          box-shadow: 0 20px 60px rgba(0,0,0,0.28);
           overflow: hidden;
           transition:
-            border-color 0.3s ease,
-            box-shadow 0.3s ease;
+            border-color 0.35s ease,
+            box-shadow 0.35s ease;
         }
 
         .experience-card::before {
           content: "";
           position: absolute;
-          left: 0;
-          top: 0;
-          bottom: 0;
-          width: 3px;
-          background: linear-gradient(
-            180deg,
-            #6366f1,
-            #c084fc,
-            #38bdf8
-          );
-          box-shadow: 0 0 20px rgba(99, 102, 241, 0.45);
+          inset: 0;
+          pointer-events: none;
+          background:
+            radial-gradient(
+              circle at 90% 10%,
+              rgba(99,102,241,0.12),
+              transparent 30%
+            );
+          opacity: 0;
+          transition: opacity 0.35s ease;
         }
 
         .experience-card:hover {
-          border-color: rgba(129, 140, 248, 0.5);
+          border-color: rgba(129,140,248,0.55);
           box-shadow:
-            0 25px 70px rgba(0, 0, 0, 0.45),
-            0 0 40px rgba(99, 102, 241, 0.08);
+            0 25px 70px rgba(0,0,0,0.4),
+            0 0 40px rgba(99,102,241,0.08);
         }
 
-        /* TIMELINE ICON */
+        .experience-card:hover::before {
+          opacity: 1;
+        }
 
-        .timeline-icon {
+        .experience-node {
           position: absolute;
-          left: -75px;
-          top: 28px;
-          width: 62px;
-          height: 62px;
+          left: -70px;
+          top: 30px;
+          width: 55px;
+          height: 55px;
           display: grid;
           place-items: center;
-          border-radius: 16px;
+          border-radius: 15px;
           color: #a5b4fc;
           background:
             linear-gradient(
-              145deg,
-              rgba(99, 102, 241, 0.20),
-              rgba(139, 92, 246, 0.08)
+              135deg,
+              rgba(99,102,241,0.25),
+              rgba(139,92,246,0.12)
             );
-          border: 1px solid rgba(129, 140, 248, 0.35);
+          border: 1px solid rgba(129,140,248,0.4);
           box-shadow:
-            0 0 25px rgba(99, 102, 241, 0.16);
-          font-size: 22px;
+            0 0 25px rgba(99,102,241,0.18);
+          font-size: 21px;
           z-index: 3;
         }
-
-        /* CARD HEADER */
 
         .experience-top {
           display: flex;
           justify-content: space-between;
           align-items: flex-start;
           gap: 25px;
-          margin-bottom: 25px;
-        }
-
-        .experience-info {
-          flex: 1;
-        }
-
-        .experience-type {
-          display: inline-block;
-          margin-bottom: 10px;
-          color: #818cf8;
-          font-family: monospace;
-          font-size: 12px;
-          font-weight: 700;
-          letter-spacing: 1.5px;
-          text-transform: uppercase;
+          position: relative;
+          z-index: 2;
         }
 
         .experience-title {
           margin: 0 0 8px;
           color: #f8fafc;
-          font-size: 27px;
-          line-height: 1.2;
+          font-size: 25px;
           font-weight: 750;
         }
 
         .experience-company {
-          margin: 0;
-          color: #c084fc;
+          color: #a5b4fc;
           font-size: 16px;
-          font-weight: 600;
+          font-weight: 650;
         }
 
         .experience-location {
           color: #64748b;
-          font-weight: 400;
+          font-size: 14px;
+          margin-left: 8px;
         }
 
         .experience-period {
           flex-shrink: 0;
-          padding: 9px 13px;
+          padding: 8px 13px;
           border-radius: 8px;
-          border: 1px solid #263244;
-          background: #0b1120;
-          color: #94a3b8;
+          color: #c4b5fd;
+          background: rgba(99,102,241,0.1);
+          border: 1px solid rgba(99,102,241,0.18);
           font-family: monospace;
           font-size: 12px;
-          white-space: nowrap;
         }
 
-        /* RESPONSIBILITIES */
+        .experience-type {
+          display: inline-flex;
+          margin-top: 18px;
+          padding: 6px 10px;
+          border-radius: 7px;
+          color: #7dd3fc;
+          background: rgba(56,189,248,0.07);
+          border: 1px solid rgba(56,189,248,0.12);
+          font-family: monospace;
+          font-size: 11px;
+        }
 
-        .responsibilities {
+        .experience-description {
+          position: relative;
+          z-index: 2;
+          margin: 22px 0;
+          color: #94a3b8;
+          line-height: 1.8;
+          font-size: 15px;
+        }
+
+        .highlights {
+          position: relative;
+          z-index: 2;
           margin: 0;
           padding: 0;
           list-style: none;
-          display: grid;
-          gap: 12px;
         }
 
-        .responsibility-item {
-          position: relative;
-          padding-left: 26px;
-          color: #94a3b8;
+        .highlight {
+          display: flex;
+          align-items: flex-start;
+          gap: 11px;
+          margin-bottom: 13px;
+          color: #cbd5e1;
           font-size: 14px;
-          line-height: 1.75;
+          line-height: 1.7;
         }
 
-        .responsibility-item::before {
-          content: "▹";
-          position: absolute;
-          left: 0;
-          top: 0;
+        .highlight svg {
+          flex-shrink: 0;
+          margin-top: 4px;
           color: #818cf8;
-          font-size: 17px;
-          font-weight: bold;
+          font-size: 13px;
         }
 
-        .responsibility-item:hover {
-          color: #e2e8f0;
+        .technology-area {
+          position: relative;
+          z-index: 2;
+          margin-top: 25px;
+          padding-top: 20px;
+          border-top: 1px solid #1e293b;
         }
 
-        /* TECHNOLOGY TAGS */
-
-        .technology-section {
-          max-width: 1050px;
-          margin: 55px auto 0;
-          padding: 35px;
-          border-radius: 18px;
-          border: 1px solid #1e293b;
-          background:
-            radial-gradient(
-              circle at center,
-              rgba(99,102,241,0.08),
-              transparent 65%
-            ),
-            #0b1120;
-        }
-
-        .technology-heading {
-          text-align: center;
-          margin-bottom: 25px;
-        }
-
-        .technology-heading h2 {
-          margin: 0;
-          font-size: 24px;
-        }
-
-        .technology-heading p {
-          margin: 8px 0 0;
+        .technology-title {
+          margin-bottom: 12px;
           color: #64748b;
-          font-size: 14px;
+          font-family: monospace;
+          font-size: 11px;
+          letter-spacing: 1px;
         }
 
         .technology-list {
           display: flex;
           flex-wrap: wrap;
-          justify-content: center;
-          gap: 10px;
+          gap: 8px;
         }
 
-        .technology-tag {
-          padding: 9px 14px;
-          border-radius: 8px;
+        .technology {
+          padding: 7px 10px;
+          border-radius: 7px;
+          color: #c4b5fd;
+          background: #0b1120;
           border: 1px solid #263244;
-          background: #0f172a;
-          color: #cbd5e1;
           font-family: monospace;
-          font-size: 12px;
+          font-size: 11px;
+          transition: 0.25s ease;
+        }
+
+        .technology:hover {
+          color: #fff;
+          border-color: #6366f1;
+          transform: translateY(-2px);
+        }
+
+        .engineering-section {
+          margin: 80px auto 0;
+          max-width: 1050px;
+        }
+
+        .engineering-header {
+          text-align: center;
+          margin-bottom: 30px;
+        }
+
+        .engineering-header h2 {
+          margin: 10px 0;
+          font-size: 32px;
+        }
+
+        .engineering-grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 15px;
+        }
+
+        .engineering-card {
+          padding: 25px 20px;
+          border-radius: 15px;
+          border: 1px solid #1e293b;
+          background: #0b1120;
+          text-align: center;
           transition: 0.3s ease;
         }
 
-        .technology-tag:hover {
-          color: #fff;
+        .engineering-card:hover {
           border-color: #6366f1;
-          transform: translateY(-3px);
-          box-shadow: 0 8px 20px rgba(99,102,241,0.12);
+          transform: translateY(-6px);
+          box-shadow: 0 15px 40px rgba(0,0,0,0.3);
         }
 
-        /* CTA */
+        .engineering-icon {
+          width: 48px;
+          height: 48px;
+          display: grid;
+          place-items: center;
+          margin: 0 auto 15px;
+          border-radius: 12px;
+          color: #818cf8;
+          background: rgba(99,102,241,0.1);
+          font-size: 20px;
+        }
+
+        .engineering-card h3 {
+          margin: 0 0 8px;
+          color: #f8fafc;
+          font-size: 15px;
+        }
+
+        .engineering-card p {
+          margin: 0;
+          color: #64748b;
+          font-size: 12px;
+          line-height: 1.6;
+        }
 
         .work-cta {
-          margin: 70px auto 0;
-          max-width: 850px;
-          padding: 55px 25px;
+          max-width: 900px;
+          margin: 75px auto 0;
+          padding: 50px 25px;
           text-align: center;
           border-radius: 20px;
           border: 1px solid #1e293b;
@@ -445,61 +540,41 @@ export default function Work() {
         }
 
         .work-cta h2 {
-          margin: 0 0 12px;
+          margin: 8px 0 12px;
           font-size: 32px;
         }
 
         .work-cta p {
-          margin: 0 0 28px;
           color: #64748b;
+          margin-bottom: 25px;
         }
 
-        .work-button {
+        .cta-button {
           display: inline-flex;
           align-items: center;
           gap: 10px;
-          padding: 14px 23px;
+          padding: 13px 22px;
           border-radius: 10px;
-          color: white;
-          text-decoration: none;
-          font-weight: 700;
+          color: #fff;
           background: linear-gradient(
             135deg,
             #6366f1,
             #8b5cf6
           );
-          box-shadow:
-            0 10px 30px rgba(99,102,241,0.25);
+          text-decoration: none;
+          font-weight: 700;
+          box-shadow: 0 10px 30px rgba(99,102,241,0.25);
           transition: 0.3s ease;
         }
 
-        .work-button:hover {
-          box-shadow:
-            0 15px 40px rgba(99,102,241,0.4);
+        .cta-button:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 15px 40px rgba(99,102,241,0.35);
         }
 
-        /* RESPONSIVE */
-
-        @media (max-width: 800px) {
-          .work-page {
-            padding: 90px 18px 70px;
-          }
-
-          .experience-list::before {
-            left: 24px;
-          }
-
-          .experience-card {
-            margin-left: 58px;
-            padding: 24px;
-          }
-
-          .timeline-icon {
-            left: -58px;
-            width: 48px;
-            height: 48px;
-            border-radius: 13px;
-            font-size: 18px;
+        @media (max-width: 900px) {
+          .engineering-grid {
+            grid-template-columns: repeat(2, 1fr);
           }
 
           .experience-top {
@@ -508,11 +583,15 @@ export default function Work() {
           }
 
           .experience-period {
-            white-space: normal;
+            align-self: flex-start;
           }
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 650px) {
+          .work-page {
+            padding: 90px 18px 60px;
+          }
+
           .work-title {
             font-size: 45px;
           }
@@ -521,35 +600,44 @@ export default function Work() {
             font-size: 15px;
           }
 
-          .experience-card {
-            margin-left: 0;
-            padding: 22px;
-            padding-top: 75px;
-          }
-
           .experience-list::before {
-            display: none;
+            left: 15px;
           }
 
-          .timeline-icon {
-            left: 22px;
-            top: 20px;
+          .experience-card {
+            margin-left: 42px;
+            padding: 22px;
+            border-radius: 15px;
+          }
+
+          .experience-node {
+            left: -42px;
+            width: 31px;
+            height: 31px;
+            top: 25px;
+            border-radius: 9px;
+            font-size: 13px;
           }
 
           .experience-title {
-            font-size: 23px;
+            font-size: 20px;
           }
 
           .experience-company {
             font-size: 14px;
           }
 
-          .responsibility-item {
-            font-size: 13px;
+          .experience-location {
+            display: block;
+            margin: 3px 0 0;
           }
 
-          .technology-section {
-            padding: 28px 18px;
+          .engineering-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .engineering-header h2 {
+            font-size: 27px;
           }
 
           .work-cta {
@@ -566,15 +654,14 @@ export default function Work() {
         <div className="work-container">
 
           {/* HEADER */}
-
           <motion.div
             className="work-header"
-            initial={{ opacity: 0, y: 35 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
           >
             <div className="work-label">
-              {"< PROFESSIONAL EXPERIENCE />"}
+              {"< EXPERIENCE />"}
             </div>
 
             <h1 className="work-title">
@@ -583,169 +670,151 @@ export default function Work() {
             </h1>
 
             <p className="work-subtitle">
-              Experience across software engineering, full-stack
-              development, backend systems, cloud infrastructure,
-              and production-ready applications.
+              4+ years of professional software engineering experience
+              across backend systems, full-stack applications, APIs,
+              databases, cloud infrastructure, security, and
+              production environments.
             </p>
           </motion.div>
 
           {/* EXPERIENCE */}
-
           <div className="experience-list">
-            {experiences.map((job, index) => (
+            {experiences.map((experience, index) => (
               <motion.article
                 className="experience-card"
-                key={job.company}
-                initial={{
-                  opacity: 0,
-                  y: 45,
-                }}
-                whileInView={{
-                  opacity: 1,
-                  y: 0,
-                }}
-                viewport={{
-                  once: true,
-                  amount: 0.2,
-                }}
+                key={`${experience.company}-${experience.title}`}
+                initial={{ opacity: 0, x: 45 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.15 }}
                 transition={{
                   duration: 0.6,
                   delay: index * 0.12,
                 }}
-                whileHover={{
-                  y: -7,
-                }}
+                whileHover={{ y: -7 }}
               >
-                <motion.div
-                  className="timeline-icon"
-                  whileHover={{
-                    scale: 1.08,
-                    rotate: 3,
-                  }}
-                >
-                  {job.icon}
-                </motion.div>
+                <div className="experience-node">
+                  {experience.icon}
+                </div>
 
                 <div className="experience-top">
-                  <div className="experience-info">
-                    <span className="experience-type">
-                      {job.type}
-                    </span>
-
+                  <div>
                     <h2 className="experience-title">
-                      {job.title}
+                      {experience.title}
                     </h2>
 
-                    <p className="experience-company">
-                      {job.company}
+                    <div className="experience-company">
+                      {experience.company}
                       <span className="experience-location">
-                        {" "}• {job.location}
+                        • {experience.location}
                       </span>
-                    </p>
+                    </div>
                   </div>
 
                   <div className="experience-period">
-                    {job.period}
+                    {experience.period}
                   </div>
                 </div>
 
-                <ul className="responsibilities">
-                  {job.responsibilities.map((responsibility, i) => (
-                    <motion.li
-                      className="responsibility-item"
-                      key={i}
-                      whileHover={{ x: 5 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      {responsibility}
-                    </motion.li>
+                <div className="experience-type">
+                  {experience.type}
+                </div>
+
+                <p className="experience-description">
+                  {experience.description}
+                </p>
+
+                <ul className="highlights">
+                  {experience.highlights.map((highlight, i) => (
+                    <li className="highlight" key={i}>
+                      <FaCheckCircle />
+                      <span>{highlight}</span>
+                    </li>
                   ))}
                 </ul>
+
+                <div className="technology-area">
+                  <div className="technology-title">
+                    TECHNOLOGIES & TOOLS
+                  </div>
+
+                  <div className="technology-list">
+                    {experience.technologies.map((technology) => (
+                      <span
+                        className="technology"
+                        key={technology}
+                      >
+                        {technology}
+                      </span>
+                    ))}
+                  </div>
+                </div>
               </motion.article>
             ))}
           </div>
 
-          {/* TECHNOLOGIES */}
-
+          {/* ENGINEERING AREAS */}
           <motion.section
-            className="technology-section"
+            className="engineering-section"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <div className="technology-heading">
-              <h2>Technologies Used</h2>
-              <p>
-                A modern engineering toolkit across frontend,
-                backend, databases, cloud and DevOps.
-              </p>
+            <div className="engineering-header">
+              <div className="work-label">
+                ENGINEERING FOCUS
+              </div>
+
+              <h2>
+                What I Bring to a Team
+              </h2>
             </div>
 
-            <div className="technology-list">
-              {technologies.map((technology, index) => (
-                <motion.span
-                  className="technology-tag"
-                  key={technology}
-                  initial={{
-                    opacity: 0,
-                    scale: 0.9,
-                  }}
-                  whileInView={{
-                    opacity: 1,
-                    scale: 1,
-                  }}
-                  viewport={{ once: true }}
-                  transition={{
-                    delay: index * 0.05,
-                  }}
-                  whileHover={{
-                    y: -3,
-                  }}
+            <div className="engineering-grid">
+              {engineeringAreas.map((area, index) => (
+                <motion.div
+                  className="engineering-card"
+                  key={area.title}
+                  whileHover={{ y: -6 }}
+                  transition={{ duration: 0.2 }}
                 >
-                  {technology}
-                </motion.span>
+                  <div className="engineering-icon">
+                    {area.icon}
+                  </div>
+
+                  <h3>{area.title}</h3>
+
+                  <p>{area.text}</p>
+                </motion.div>
               ))}
             </div>
           </motion.section>
 
           {/* CTA */}
-
           <motion.section
             className="work-cta"
-            initial={{
-              opacity: 0,
-              y: 30,
-            }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-            }}
-            viewport={{
-              once: true,
-            }}
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
           >
             <div className="work-label">
-              LET'S BUILD SOMETHING
+              {"< LET'S BUILD />"}
             </div>
 
             <h2>
-              Ready for the next challenge?
+              Ready to build something great?
             </h2>
 
             <p>
-              I'm interested in building reliable products,
-              scalable systems, and meaningful digital experiences.
+              I'm interested in software engineering,
+              full-stack development, backend and cloud
+              engineering opportunities.
             </p>
 
             <motion.a
               href="/contact"
-              className="work-button"
-              whileHover={{
-                scale: 1.05,
-              }}
-              whileTap={{
-                scale: 0.97,
-              }}
+              className="cta-button"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.97 }}
             >
               Let's Connect
               <FaArrowRight />
@@ -757,4 +826,3 @@ export default function Work() {
     </>
   );
 }
-
