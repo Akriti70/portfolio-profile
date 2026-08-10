@@ -1,4 +1,5 @@
 // src/components/Navbar.js
+
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 
@@ -8,20 +9,68 @@ import {
   FaProjectDiagram,
   FaGraduationCap,
   FaBriefcase,
+  FaEnvelope,
   FaBars,
   FaTimes,
+  FaCode,
 } from "react-icons/fa";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 768);
+  const [isDesktop, setIsDesktop] = useState(
+    window.innerWidth >= 768
+  );
+
   const location = useLocation();
 
   useEffect(() => {
-    const handleResize = () => setIsDesktop(window.innerWidth >= 768);
+    const handleResize = () => {
+      setIsDesktop(window.innerWidth >= 768);
+
+      if (window.innerWidth >= 768) {
+        setIsOpen(false);
+      }
+    };
+
     window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
+
+  const menuItems = [
+    {
+      name: "Profile",
+      path: "/",
+      icon: <FaUserCircle />,
+    },
+    {
+      name: "Skills",
+      path: "/skills",
+      icon: <FaTools />,
+    },
+    {
+      name: "Projects",
+      path: "/projects",
+      icon: <FaProjectDiagram />,
+    },
+    {
+      name: "Education",
+      path: "/education",
+      icon: <FaGraduationCap />,
+    },
+    {
+      name: "Work",
+      path: "/work",
+      icon: <FaBriefcase />,
+    },
+    {
+      name: "Contact",
+      path: "/contact",
+      icon: <FaEnvelope />,
+    },
+  ];
 
   const styles = {
     nav: {
@@ -29,121 +78,241 @@ export default function Navbar() {
       top: 0,
       left: 0,
       width: "100%",
-      zIndex: 50,
-      background: "linear-gradient(135deg, rgb(44, 62, 80), rgb(20, 28, 38))", // updated gradient
-      boxShadow: "0px 4px 12px rgba(0,0,0,0.4)",
-      backdropFilter: "blur(6px)",
+      zIndex: 1000,
+      background: "rgba(7, 11, 18, 0.88)",
+      borderBottom: "1px solid rgba(99, 102, 241, 0.18)",
+      boxShadow: "0 8px 30px rgba(0, 0, 0, 0.3)",
+      backdropFilter: "blur(18px)",
+      WebkitBackdropFilter: "blur(18px)",
     },
+
     wrapper: {
-      maxWidth: "1200px",
+      maxWidth: "1250px",
       margin: "0 auto",
       padding: "14px 24px",
       display: "flex",
       justifyContent: "space-between",
       alignItems: "center",
+      position: "relative",
     },
+
     logo: {
-      color: "#facc15",
-      fontSize: "26px",
-      fontWeight: "bold",
+      color: "#fff",
+      fontSize: "23px",
+      fontWeight: "800",
       textDecoration: "none",
-      letterSpacing: "1px",
+      letterSpacing: "-0.5px",
+      display: "flex",
+      alignItems: "center",
+      gap: "9px",
     },
+
+    logoIcon: {
+      color: "#818cf8",
+      fontSize: "22px",
+    },
+
+    logoDot: {
+      color: "#818cf8",
+    },
+
     desktopMenu: {
       display: "flex",
-      gap: "24px",
-      fontWeight: "500",
+      gap: "5px",
       alignItems: "center",
     },
+
     link: (active) => ({
-      color: active ? "#facc15" : "#fff",
+      color: active ? "#ffffff" : "#94a3b8",
       textDecoration: "none",
       display: "flex",
       alignItems: "center",
       gap: "8px",
-      padding: "6px 12px",
-      borderRadius: "8px",
-      transition: "all 0.3s ease",
-      backgroundColor: active ? "rgba(250,204,21,0.1)" : "transparent",
-      fontSize: "16px",
-      fontWeight: "500",
+      padding: "9px 13px",
+      borderRadius: "9px",
+      transition: "all 0.25s ease",
+      background: active
+        ? "rgba(99, 102, 241, 0.15)"
+        : "transparent",
+      border: active
+        ? "1px solid rgba(129, 140, 248, 0.25)"
+        : "1px solid transparent",
+      fontSize: "14px",
+      fontWeight: active ? "600" : "500",
     }),
-    mobileBtn: {
-      color: "#fff",
-      fontSize: "28px",
-      background: "none",
-      border: "none",
-      cursor: "pointer",
-      display: "block",
+
+    icon: {
+      fontSize: "15px",
     },
+
+    contactLink: {
+      color: "#fff",
+      textDecoration: "none",
+      display: "flex",
+      alignItems: "center",
+      gap: "8px",
+      marginLeft: "8px",
+      padding: "10px 16px",
+      borderRadius: "9px",
+      background: "linear-gradient(135deg, #6366f1, #8b5cf6)",
+      boxShadow: "0 5px 20px rgba(99, 102, 241, 0.22)",
+      fontSize: "14px",
+      fontWeight: "700",
+    },
+
+    mobileBtn: {
+      color: "#e2e8f0",
+      fontSize: "24px",
+      background: "rgba(15, 23, 42, 0.8)",
+      border: "1px solid #334155",
+      borderRadius: "9px",
+      width: "42px",
+      height: "42px",
+      display: "grid",
+      placeItems: "center",
+      cursor: "pointer",
+    },
+
     mobileMenu: {
-      background: "linear-gradient(135deg, rgb(44, 62, 80), rgb(20, 28, 38))",
+      position: "absolute",
+      top: "70px",
+      left: "5%",
       width: "90%",
-      margin: "10px auto",
-      padding: "20px",
+      padding: "12px",
       display: "flex",
       flexDirection: "column",
-      gap: "16px",
-      borderRadius: "12px",
-      color: "#fff",
-      fontWeight: "500",
-      boxShadow: "0 8px 20px rgba(0,0,0,0.4)",
+      gap: "4px",
+      borderRadius: "14px",
+      background: "rgba(10, 15, 25, 0.97)",
+      border: "1px solid #263244",
+      boxShadow: "0 20px 50px rgba(0, 0, 0, 0.5)",
+      backdropFilter: "blur(20px)",
     },
-  };
 
-  const menuItems = [
-    { name: "Profile", path: "/", icon: <FaUserCircle /> },
-    { name: "Skills", path: "/skills", icon: <FaTools /> },
-    { name: "Projects", path: "/projects", icon: <FaProjectDiagram /> },
-    { name: "Education", path: "/education", icon: <FaGraduationCap /> },
-    { name: "Work", path: "/work", icon: <FaBriefcase /> },
-    { name: "Contact", path: "/contact", icon: <FaUserCircle /> },
-  ];
+    mobileLink: (active) => ({
+      color: active ? "#ffffff" : "#94a3b8",
+      textDecoration: "none",
+      display: "flex",
+      alignItems: "center",
+      gap: "12px",
+      padding: "13px 15px",
+      borderRadius: "9px",
+      background: active
+        ? "rgba(99, 102, 241, 0.15)"
+        : "transparent",
+      fontSize: "15px",
+      fontWeight: active ? "600" : "500",
+    }),
+  };
 
   return (
     <nav style={styles.nav}>
+
       <div style={styles.wrapper}>
+
+        {/* LOGO */}
         <Link to="/" style={styles.logo}>
-          DevShowcase
+          <FaCode style={styles.logoIcon} />
+
+          <span>
+            Dev
+            <span style={styles.logoDot}>.</span>
+            Showcase
+          </span>
         </Link>
 
+
+        {/* DESKTOP NAVIGATION */}
         {isDesktop ? (
+
           <div style={styles.desktopMenu}>
-            {menuItems.map((item) => (
-              <Link
-                key={item.name}
-                to={item.path}
-                style={styles.link(location.pathname === item.path)}
-              >
-                {item.icon} {item.name}
-              </Link>
-            ))}
+
+            {menuItems.map((item) => {
+
+              const isActive =
+                location.pathname === item.path;
+
+              return (
+                <Link
+                  key={item.name}
+                  to={item.path}
+                  style={styles.link(isActive)}
+                >
+
+                  <span style={styles.icon}>
+                    {item.icon}
+                  </span>
+
+                  {item.name}
+
+                </Link>
+              );
+            })}
+
+            {/* CONTACT BUTTON */}
+            <Link
+              to="/contact"
+              style={styles.contactLink}
+            >
+              <FaEnvelope />
+              Let's Talk
+            </Link>
+
           </div>
+
         ) : (
+
           <>
+            {/* MOBILE BUTTON */}
+
             <button
               style={styles.mobileBtn}
               onClick={() => setIsOpen(!isOpen)}
+              aria-label="Toggle navigation"
             >
               {isOpen ? <FaTimes /> : <FaBars />}
             </button>
+
+
+            {/* MOBILE MENU */}
+
             {isOpen && (
+
               <div style={styles.mobileMenu}>
-                {menuItems.map((item) => (
-                  <Link
-                    key={item.name}
-                    to={item.path}
-                    onClick={() => setIsOpen(false)}
-                    style={styles.link(location.pathname === item.path)}
-                  >
-                    {item.icon} {item.name}
-                  </Link>
-                ))}
+
+                {menuItems.map((item) => {
+
+                  const isActive =
+                    location.pathname === item.path;
+
+                  return (
+                    <Link
+                      key={item.name}
+                      to={item.path}
+                      onClick={() => setIsOpen(false)}
+                      style={styles.mobileLink(isActive)}
+                    >
+
+                      <span style={styles.icon}>
+                        {item.icon}
+                      </span>
+
+                      {item.name}
+
+                    </Link>
+                  );
+
+                })}
+
               </div>
+
             )}
+
           </>
         )}
+
       </div>
     </nav>
   );
 }
+
